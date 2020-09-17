@@ -1,5 +1,6 @@
-FROM alpine
+FROM debian:bullseye-slim
 
-RUN apk add curl git \
+RUN apt update && apt install --assume-yes add curl git \
     && curl -L https://github.com/idc101/git-mkver/releases/download/v1.1.1/git-mkver-linux-amd64-1.1.1.tar.gz | tar xvz \
-    && mv git-mkver /usr/local/bin
+    && mv git-mkver /usr/local/bin \
+    && rm -rf *.tar.gz
